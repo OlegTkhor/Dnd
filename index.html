@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D&D Character Stats</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        margin: 20px auto;
+        max-width: 600px;
+    }
+    .stat {
+        margin-bottom: 20px;
+    }
+    .counter {
+        display: flex;
+        align-items: center;
+    }
+    .counter button {
+        padding: 10px 15px;
+        margin: 0 5px;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%; /* Round shape */
+    }
+    .heart {
+        color: red;
+        font-size: 30px;
+    }
+    .coin-icon {
+        font-size: 20px;
+        margin-right: 5px;
+    }
+    .spell-counter {
+        background-color: #eaeaea;
+        color: #333;
+        font-size: 20px;
+    }
+    .arrow-counter,
+    .gold-counter,
+    .silver-counter {
+        background-color: #eaeaea;
+        padding: 5px 10px;
+        margin-right: 5px;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>Elvish Stats</h1>
+    <div class="stat">
+        <h2>Health Points</h2>
+        <div class="counter hp-counter">
+            <span class="heart">&hearts;</span>
+            <button onclick="decreaseHealth()">-</button>
+            <span id="health">31</span>
+            <button onclick="increaseHealth()">+</button>
+        </div>
+    </div>
+    <div class="stat">
+        <h2>Temporary Health Points</h2>
+        <div class="counter hp-counter">
+            <span class="heart">&hearts;</span>
+            <button onclick="decreaseTempHealth()">-</button>
+            <span id="temphealth">0</span>
+            <button onclick="increaseTempHealth()">+</button>
+        </div>
+    </div>
+    <div class="stat">
+        <h2>Arrows</h2>
+        <div class="counter arrow-counter">
+            <span class="coin-icon">🏹</span>
+            <button onclick="decreaseArrows()">-</button>
+            <span id="arrows">20</span>
+            <button onclick="increaseArrows()">+</button>
+        </div>
+    </div>
+    <div class="stat">
+        <h2>Gold Coins</h2>
+        <div class="counter gold-counter">
+            <span class="coin-icon">💰</span>
+            <button onclick="decreaseGold()">-</button>
+            <span id="gold">200</span>
+            <button onclick="increaseGold()">+</button>
+        </div>
+    </div>
+    <div class="stat">
+        <h2>Silver Coins</h2>
+        <div class="counter silver-counter">
+            <span class="coin-icon">💰</span>
+            <button onclick="decreaseSilver()">-</button>
+            <span id="silver">10</span>
+            <button onclick="increaseSilver()">+</button>
+        </div>
+    </div>
+    <div class="stat">
+        <h2>Spell Slots</h2>
+        <div class="counter spell-counter">
+            <span class="counter-description">Spell Slots Level 1:</span>
+            <button onclick="decreaseSpellSlot(1)">-</button>
+            <span id="spellSlots1">4</span>
+            <button onclick="increaseSpellSlot(1)">+</button>
+        </div>
+        <div class="counter spell-counter">
+            <span class="counter-description">Spell Slots Level 2:</span>
+            <button onclick="decreaseSpellSlot(2)">-</button>
+            <span id="spellSlots2">3</span>
+            <button onclick="increaseSpellSlot(2)">+</button>
+        </div>
+        <div class="counter spell-counter">
+            <span class="counter-description">Bardic Inspiration:</span>
+            <button onclick="decreaseBardicInspiration()">-</button>
+            <span id="bardicinspiration">3</span>
+            <button id="increaseBardicButton" onclick="increaseBardicInspiration()">+</button>
+        </div>
+    </div>
+    <div class="stat">
+        <h2>Rest</h2>
+        <div class="counter spell-counter">
+            <button onclick="decreaseSpellSlot(2)">Short rest</button>
+            
+            <button onclick="longRest()">Long rest</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    let health = 31;
+    let temphealth = 0;
+    let arrows = 20;
+    let goldCoins = 200;
+    let silverCoins = 10;
+    let spellSlots = [4, 3];
+    let bardicinspiration = 3
+    const maxArrows = 20;
+    const max_health = 31;
+    const max_spellSlots_1 = 4;
+    const max_spellSlots_2 = 3;
+    const max_bardicinspiration = 3;
+
+    function updateHealthIndicator() {
+        document.getElementById('health').textContent = health;
+    }
+    function longRest() {
+        health = max_health;
+        updateHealthIndicator();
+        temphealth = 0;
+        document.getElementById('temphealth').textContent = temphealth;
+        spellSlots = [max_spellSlots_1, max_spellSlots_2];
+        document.getElementById('spellSlots1').textContent = spellSlots[0];
+        document.getElementById('spellSlots2').textContent = spellSlots[1];
+        document.getElementById('increaseBardicButton').style.display = "inline-block";
+    }
+
+    function increaseHealth() {
+        if (health < max_health) {
+            health++;
+            updateHealthIndicator();
+        }
+    }
+
+    function increaseBardicInspiration() {
+            if (bardicinspiration< max_bardicinspiration){
+            bardicinspiration++;
+            document.getElementById('bardicinspiration').textContent = bardicinspiration
+            document.getElementById('increaseBardicButton').style.display = "none"; }   
+    }
+    function decreaseBardicInspiration() {
+            if (bardicinspiration > 0){ 
+            bardicinspiration--;
+            document.getElementById('bardicinspiration').textContent = bardicinspiration}
+    }
+
+    function decreaseHealth() {
+        if (health > 0) {
+            health--;
+            updateHealthIndicator();
+        }
+    }
+
+    function decreaseTempHealth() {
+        if (temphealth > 0) {
+            temphealth--;
+            document.getElementById('temphealth').textContent = temphealth;
+        }
+    }
+
+    function increaseTempHealth() {
+        if (health === max_health) {
+            temphealth++;
+            document.getElementById('temphealth').textContent = temphealth;
+        }
+    }
+
+    function increaseArrows() {
+        if (arrows < maxArrows) {
+            arrows++;
+            document.getElementById('arrows').textContent = arrows;
+        }
+    }
+
+    function decreaseArrows() {
+        if (arrows > 0) {
+            arrows--;
+            document.getElementById('arrows').textContent = arrows;
+        }
+    }
+
+    function increaseSpellSlot(index) {
+        if (spellSlots[index - 1] < max_spellSlots[index - 1]) {
+            spellSlots[index - 1]++;
+            document.getElementById('spellSlots' + index).textContent = spellSlots[index - 1];
+        }
+    }
+
+    function decreaseSpellSlot(index) {
+        if (spellSlots[index - 1] > 0) {
+            spellSlots[index - 1]--;
+            document.getElementById('spellSlots' + index).textContent = spellSlots[index - 1];
+        }
+    }
+
+    function decreaseGold() {
+        if (goldCoins > 0) {
+            goldCoins--;
+            document.getElementById('gold').textContent = goldCoins
+        }
+    }
+
+    function increaseGold() {
+            goldCoins++;
+            document.getElementById('gold').textContent = goldCoins
+        
+    }
+    function decreaseSilver() {
+        if (silverCoins > 0) {
+            silverCoins--;
+            document.getElementById('silver').textContent = silverCoins
+        }
+    }
+
+    function increaseSilver() {
+        silverCoins++;
+        document.getElementById('silver').textContent = silverCoins
+        
+    }
+</script>
+</body>
+</html>
