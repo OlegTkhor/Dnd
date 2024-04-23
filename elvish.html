@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Counter</title>
+    <style>
+        .counter-container {
+            display: flex;
+            align-items: center;
+        }
+        .counter-container button {
+            margin: 0 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="counter-container">
+        <span>Health Points</span>
+        <button onclick="increase_hp()">+</button>
+        <h2 id="hp">31</h2>
+        <button onclick="decrease_hp()">-</button>
+    </div>
+    <div class="counter-container">
+        <span>Temporary Health Points</span>
+        <button onclick="increase_temp_hp()">+</button>
+        <h2 id="temp_hp">0</h2>
+        <button onclick="decrease_temp_hp()">-</button>
+    </div>
+
+    <script>
+        function increase_hp() {
+            var numberElement = document.getElementById("hp");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_hp() {
+            var numberElement = document.getElementById("hp");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+        function increase_temp_hp() {
+            var numberElement = document.getElementById("temp_hp");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_temp_hp() {
+            var numberElement = document.getElementById("temp_hp");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+    </script>
+</body>
+</html>
+
+
