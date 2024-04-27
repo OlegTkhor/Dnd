@@ -15,20 +15,176 @@
     </style>
 </head>
 <body>
+    <h1> Elvish Stats </h1>
+    <h2> HP Stats </h2>
     <div class="counter-container">
-        <span>Health Points</span>
+        <span> &#10084;&#65039; Health Points</span>
         <button onclick="increase_hp()">+</button>
         <h2 id="hp">31</h2>
-        <button onclick="decrease_hp()">-</button>
-    </div>
-    <div class="counter-container">
-        <span>Temporary Health Points</span>
+        <button onclick="decrease_hp()" style="margin-right: 20px;">-</button>
+        <span> &#10084;&#65039; Temporary Health Points</span>
         <button onclick="increase_temp_hp()">+</button>
         <h2 id="temp_hp">0</h2>
         <button onclick="decrease_temp_hp()">-</button>
     </div>
+    <div class="counter-container">
+        <span> &#127922 Dice of Health 1d8 </span>
+        <button onclick="increase_dice()">+</button>
+        <h2 id="dice_of_health">4</h2>
+        <button onclick="decrease_dice()" style="margin-right: 20px;">-</button>
+    </div>
+
+    <h2> Weapon Stats </h2>
+    <div class="counter-container">
+        <span>🏹 Light Crossbow +4 </span>
+    </div>
+    <div class="counter-container">
+        <h3 style="margin-right: 20px;"> 1d8 + 2</h3>
+        <span>   Arrows / Bolts / Bullets </span>
+        <button onclick="increase_projectiles()">+</button>
+        <h2 id="projectiles">20</h2>
+        <button onclick="decrease_projectiles()" style="margin-right: 20px;">-</button>
+    </div>
+    <div class="counter-container">
+        <span>⚔️ Rapier +4 </span>
+    </div>
+    <div class="counter-container">
+        <h3>1d8 + 2 </h3>
+    </div>
+
+    <h2> Spells </h2>
+    <div class="counter-container">
+        <span> &#128302; lvl 1 Spels </span>
+        <button onclick="increase_lvl_1_spells()">+</button>
+        <h2 id="lvl_1_spells">4</h2>
+        <button onclick="decrease_lvl_1_spells()" style="margin-right: 20px;">-</button>
+
+        <span> &#9889; lvl 2 Spels </span>
+        <button onclick="increase_lvl_2_spells()">+</button>
+        <h2 id="lvl_2_spells">3</h2>
+        <button onclick="decrease_lvl_2_spells()" style="margin-right: 20px;">-</button>
+    </div>
+
+    <div class="counter-container">
+        <span> &#10024; Bardic Inspirations </span>
+        <button onclick="increase_bardic_inspiration()">+</button>
+        <h2 id="bardic_inspiration">3</h2>
+        <button onclick="decrease_bardic_inspiration()" style="margin-right: 20px;">-</button>
+    </div>
+
+    <h2> Money </h2>
+    <div class="counter-container">
+        <span> 💰 Silver </span>
+        <button onclick="increase_silver()">+</button>
+        <h2 id="silver">10</h2>
+        <button onclick="decrease_silver()" style="margin-right: 20px;">-</button>
+
+        <span> 💰💰 Gold </span>
+        <button onclick="increase_gold()">+</button>
+        <h2 id="gold">220</h2>
+        <button onclick="decrease_gold()" style="margin-right: 20px;">-</button>
+    </div>
 
     <script>
+        function increase_silver() {
+            var numberElement = document.getElementById("silver");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_silver() {
+            var numberElement = document.getElementById("silver");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+        function increase_gold() {
+            var numberElement = document.getElementById("gold");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_gold() {
+            var numberElement = document.getElementById("gold");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+        function increase_bardic_inspiration() {
+            var numberElement = document.getElementById("bardic_inspiration");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_bardic_inspiration() {
+            var numberElement = document.getElementById("bardic_inspiration");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+        function increase_lvl_2_spells() {
+            var numberElement = document.getElementById("lvl_2_spells");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_lvl_2_spells() {
+            var numberElement = document.getElementById("lvl_2_spells");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+        function increase_lvl_1_spells() {
+            var numberElement = document.getElementById("lvl_1_spells");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_lvl_1_spells() {
+            var numberElement = document.getElementById("lvl_1_spells");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+        function increase_projectiles() {
+            var numberElement = document.getElementById("projectiles");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_projectiles() {
+            var numberElement = document.getElementById("projectiles");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
+    
+        function increase_dice() {
+            var numberElement = document.getElementById("dice_of_health");
+            var currentNumber = parseInt(numberElement.innerText);
+            var newNumber = currentNumber + 1;
+            numberElement.innerText = newNumber;
+        }
+        function decrease_dice() {
+            var numberElement = document.getElementById("dice_of_health");
+            var currentNumber = parseInt(numberElement.innerText);
+            if (currentNumber > 0) {
+                var newNumber = currentNumber - 1;
+                numberElement.innerText = newNumber;
+            }
+        }
         function increase_hp() {
             var numberElement = document.getElementById("hp");
             var currentNumber = parseInt(numberElement.innerText);
